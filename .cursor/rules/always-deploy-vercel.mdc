@@ -1,0 +1,6 @@
+# Deploy to Vercel by default
+
+After finishing UI/site changes for CarbonSense, deploy to production with `npx vercel --prod --yes` in the same turn — do not wait for the user to ask.
+
+- Skip deploy only for pure questions, docs-only edits, or when the user explicitly says not to deploy.
+- Return the live Vercel production URL when the deploy finishes.
