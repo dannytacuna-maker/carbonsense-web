@@ -2,13 +2,16 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
+import { ArticleCard } from "@/components/ArticleCard";
 import { ExpertPortrait } from "@/components/ExpertPortrait";
 import { IconEmail, IconLinkedIn } from "@/components/Icons";
+import { SectionHeading } from "@/components/SectionHeading";
 import { site } from "@/lib/content";
-import type { Author } from "@/lib/types";
+import type { Article, Author } from "@/lib/types";
 
 type ExpertProfileViewProps = {
   author: Author;
+  articles?: Article[];
 };
 
 function ProfileList({ title, items }: { title: string; items: string[] }) {
@@ -87,8 +90,12 @@ function ProfileCopy({ author }: { author: Author }) {
   );
 }
 
-export function ExpertProfileView({ author }: ExpertProfileViewProps) {
+export function ExpertProfileView({
+  author,
+  articles = [],
+}: ExpertProfileViewProps) {
   const reduce = useReducedMotion();
+  const firstName = author.name.split(" ")[0];
 
   return (
     <div className="pt-[72px]">
@@ -117,6 +124,26 @@ export function ExpertProfileView({ author }: ExpertProfileViewProps) {
           />
         </motion.div>
       </section>
+
+      {articles.length > 0 ? (
+        <section className="border-t border-[var(--line)] bg-elevated py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-5 md:px-8">
+            <SectionHeading
+              title={`Articles by ${firstName}`}
+              description={
+                articles.length === 1
+                  ? "One piece published on Carbon Sense."
+                  : `${articles.length} pieces published on Carbon Sense.`
+              }
+            />
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+              {articles.map((article, i) => (
+                <ArticleCard key={article.slug} article={article} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

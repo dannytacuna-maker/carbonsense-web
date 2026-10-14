@@ -314,6 +314,16 @@ export const articles: Article[] = [
   },
 ];
 
+export function getArticlesByAuthor(slug: string) {
+  const author = getAuthor(slug);
+  if (!author) return [];
+  return articles.filter((article) =>
+    article.authors.some(
+      (a) => a.slug === slug || (!a.slug && a.name === author.name)
+    )
+  );
+}
+
 export function formatDate(iso: string) {
   return new Date(iso + "T12:00:00").toLocaleDateString("en-GB", {
     day: "numeric",

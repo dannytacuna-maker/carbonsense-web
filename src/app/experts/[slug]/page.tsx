@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ExpertProfileView } from "@/components/ExpertProfileView";
-import { authors, getAuthor } from "@/lib/content";
+import { authors, getArticlesByAuthor, getAuthor } from "@/lib/content";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -26,5 +26,7 @@ export default async function ExpertProfilePage({ params }: PageProps) {
   const author = getAuthor(slug);
   if (!author) notFound();
 
-  return <ExpertProfileView author={author} />;
+  return (
+    <ExpertProfileView author={author} articles={getArticlesByAuthor(slug)} />
+  );
 }
