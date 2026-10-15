@@ -72,6 +72,12 @@ function ButtonShell({
   );
 }
 
+function plainButtonClass(isPrimary: boolean) {
+  return isPrimary
+    ? "inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-[var(--forest)]"
+    : "inline-flex items-center justify-center rounded-full border border-ink/15 bg-white px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-accent hover:text-accent";
+}
+
 export function MagneticButton({
   href,
   children,
@@ -87,11 +93,12 @@ export function MagneticButton({
   const useSwap = Boolean(arrow || lead || trailing || typeof children === "string");
 
   if (!useSwap) {
-    const base = isPrimary
-      ? "inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-300 hover:bg-[var(--forest)]"
-      : "inline-flex items-center justify-center rounded-full border border-ink/15 bg-white px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:border-accent hover:text-accent";
     return (
-      <ButtonShell href={href} external={external} className={`${base} ${className}`}>
+      <ButtonShell
+        href={href}
+        external={external}
+        className={`${plainButtonClass(isPrimary)} ${className}`}
+      >
         {children}
       </ButtonShell>
     );

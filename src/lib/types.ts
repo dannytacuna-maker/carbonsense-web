@@ -10,7 +10,6 @@ export type Author = {
   languages?: string[];
   country?: string;
   linkedIn?: string;
-  email?: string;
   bio: string;
   expertise: string[];
 };

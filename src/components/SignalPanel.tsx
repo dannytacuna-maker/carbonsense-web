@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 /** Annual CO₂e tonnes basis aligned with worldemissions.io / existing site. */
 const ANNUAL_CO2_TONNES = 60_402_739_000;
@@ -11,7 +11,29 @@ function formatTonnes(n: number) {
   return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-export function SignalPanel() {
+function SignalMetric({
+  label,
+  value,
+  note,
+}: {
+  label: string;
+  value: ReactNode;
+  note: ReactNode;
+}) {
+  return (
+    <div className="flex min-w-[12.5rem] flex-1 flex-col justify-center px-7 py-8 md:px-8 md:py-9">
+      <p className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-[#3d4a44]">
+        {label}
+      </p>
+      <p className="display mt-7 text-[clamp(2rem,3vw,2.45rem)] leading-none tracking-tight text-ink">
+        {value}
+      </p>
+      <div className="mt-5 text-sm leading-relaxed text-[#4a5a53]">{note}</div>
+    </div>
+  );
+}
+
+function useLiveTonnesCounter() {
   const valueRef = useRef<HTMLSpanElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -39,6 +61,12 @@ export function SignalPanel() {
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, []);
+
+  return { valueRef, ready };
+}
+
+export function SignalPanel() {
+  const { valueRef, ready } = useLiveTonnesCounter();
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-[rgba(11,15,13,0.1)] bg-[rgba(255,255,255,0.94)] shadow-[0_16px_48px_rgba(11,15,13,0.1)]">
@@ -81,29 +109,25 @@ export function SignalPanel() {
 
         <div className="h-px w-full bg-[rgba(11,15,13,0.1)] lg:h-auto lg:w-px" />
 
-        <div className="flex min-w-[12.5rem] flex-1 flex-col justify-center px-7 py-8 md:px-8 md:py-9">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-[#3d4a44]">
-            Expected warming by 2100
-          </p>
-          <p className="display mt-7 text-[clamp(2rem,3vw,2.45rem)] leading-none tracking-tight text-ink">
-            ~2.6°C
-          </p>
-          <p className="mt-5 max-w-[15rem] text-sm leading-relaxed text-[#4a5a53]">
-            Based on current policies and action
-          </p>
-        </div>
+        <SignalMetric
+          label="Expected warming by 2100"
+          value="~2.6°C"
+          note={
+            <span className="block max-w-[15rem]">Based on current policies and action</span>
+          }
+        />
 
         <div className="h-px w-full bg-[rgba(11,15,13,0.1)] lg:h-auto lg:w-px" />
 
-        <div className="flex min-w-[12.5rem] flex-1 flex-col justify-center px-7 py-8 md:px-8 md:py-9">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-[#3d4a44]">
-            Closest IPCC pathway
-          </p>
-          <p className="display mt-7 text-[clamp(2rem,3vw,2.45rem)] leading-none tracking-tight text-ink">
-            SSP<span className="text-accent">2-4.5</span>
-          </p>
-          <p className="mt-5 text-sm leading-relaxed text-[#4a5a53]">Middle of the Road</p>
-        </div>
+        <SignalMetric
+          label="Closest IPCC pathway"
+          value={
+            <>
+              SSP<span className="text-accent">2-4.5</span>
+            </>
+          }
+          note="Middle of the Road"
+        />
       </div>
     </div>
   );
