@@ -1,7 +1,5 @@
 import type { Article, Author } from "./types";
 
-const ASSET = "https://www.carbonsense.net";
-
 export const site = {
   name: "Carbon Sense",
   tagline: "Climate economics, clearly reasoned.",
@@ -14,7 +12,7 @@ export const site = {
   goFundMe: "https://www.gofundme.com/f/carbon-sense-climate-economics-blog",
   reviewForm:
     "https://docs.google.com/forms/d/e/1FAIpQLSfD9vx3ONACYBMlG7wC9x0kHM3eaiE-bf1kbvY-DhmtaqC-qA/viewform",
-  logo: `${ASSET}/assets/logo3.png`,
+  logo: "/brand/logo3.png",
 };
 
 export const authors: Author[] = [
@@ -178,7 +176,7 @@ export const articles: Article[] = [
     date: "2026-06-16",
     readTime: 10,
     tags: ["Industrial policy"],
-    image: `${ASSET}/assets/article_imgs/green-hydrogen.png`,
+    image: "/assets/article_imgs/green-hydrogen.png",
     authors: [authors[1]],
   },
   {
@@ -188,7 +186,7 @@ export const articles: Article[] = [
     date: "2026-04-23",
     readTime: 10,
     tags: ["Carbon budgets"],
-    image: `${ASSET}/assets/article_imgs/flying.png`,
+    image: "/assets/article_imgs/flying.png",
     authors: [authors[5]],
   },
   {
@@ -198,7 +196,7 @@ export const articles: Article[] = [
     date: "2026-03-31",
     readTime: 10,
     tags: ["Climate mortality"],
-    image: `${ASSET}/assets/article_imgs/mortality.png`,
+    image: "/assets/article_imgs/mortality.png",
     authors: [authors[2]],
   },
   {
@@ -208,7 +206,7 @@ export const articles: Article[] = [
     date: "2026-03-17",
     readTime: 10,
     tags: ["Opinion"],
-    image: `${ASSET}/assets/article_imgs/skiing.png`,
+    image: "/assets/article_imgs/skiing.png",
     authors: [authors[0]],
   },
   {
@@ -218,7 +216,7 @@ export const articles: Article[] = [
     date: "2026-03-11",
     readTime: 10,
     tags: ["Carbon markets"],
-    image: `${ASSET}/assets/article_imgs/eu_ets_emissions.png`,
+    image: "/assets/article_imgs/eu_ets_emissions.png",
     authors: [authors[1]],
   },
   {
@@ -229,7 +227,7 @@ export const articles: Article[] = [
     date: "2026-02-24",
     readTime: 10,
     tags: ["Climate finance"],
-    image: `${ASSET}/assets/article_imgs/southeast-asia.png`,
+    image: "/assets/article_imgs/southeast-asia.png",
     authors: [{ name: "Will Mewhirter" }],
   },
   {
@@ -239,7 +237,7 @@ export const articles: Article[] = [
     date: "2026-02-17",
     readTime: 10,
     tags: ["Emissions by Scope", "Input-Output analysis"],
-    image: `${ASSET}/assets/article_imgs/InputOutput_Spain.png`,
+    image: "/assets/article_imgs/InputOutput_Spain.png",
     authors: [authors[3], authors[4]],
   },
   {
@@ -249,7 +247,7 @@ export const articles: Article[] = [
     date: "2026-02-10",
     readTime: 16,
     tags: ["Carbon budgets"],
-    image: `${ASSET}/assets/article_imgs/tcre.png`,
+    image: "/assets/article_imgs/tcre.png",
     authors: [authors[5]],
   },
   {
@@ -259,7 +257,7 @@ export const articles: Article[] = [
     date: "2026-01-27",
     readTime: 16,
     tags: ["Climate change"],
-    image: `${ASSET}/assets/article_imgs/flaring-venezuela.png`,
+    image: "/assets/article_imgs/flaring-venezuela.png",
     authors: [authors[1], authors[0]],
   },
   {
@@ -269,7 +267,7 @@ export const articles: Article[] = [
     date: "2026-01-20",
     readTime: 9,
     tags: ["Innovation"],
-    image: `${ASSET}/assets/article_imgs/dirty-growth.jpg`,
+    image: "/assets/article_imgs/dirty-growth.jpg",
     authors: [authors[4]],
   },
   {
@@ -279,7 +277,7 @@ export const articles: Article[] = [
     date: "2026-01-13",
     readTime: 10,
     tags: ["Voluntary carbon market"],
-    image: `${ASSET}/assets/article_imgs/carbon-emissions.jpg`,
+    image: "/assets/article_imgs/carbon-emissions.jpg",
     authors: [authors[0]],
   },
   {
@@ -289,7 +287,7 @@ export const articles: Article[] = [
     date: "2026-01-06",
     readTime: 7,
     tags: ["Just transition"],
-    image: `${ASSET}/assets/article_imgs/just_transition.jpg`,
+    image: "/assets/article_imgs/just_transition.jpg",
     authors: [authors[3]],
   },
   {
@@ -299,7 +297,7 @@ export const articles: Article[] = [
     date: "2025-12-16",
     readTime: 12,
     tags: ["Carbon taxes"],
-    image: `${ASSET}/assets/article_imgs/power-plant-smoke.png`,
+    image: "/assets/article_imgs/power-plant-smoke.png",
     authors: [authors[6]],
   },
   {
@@ -309,7 +307,7 @@ export const articles: Article[] = [
     date: "2025-12-09",
     readTime: 7,
     tags: ["Macroeconomic modelling"],
-    image: `${ASSET}/assets/article_imgs/Climate-Stripes.png`,
+    image: "/assets/article_imgs/Climate-Stripes.png",
     authors: [authors[1]],
   },
 ];

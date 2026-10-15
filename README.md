@@ -50,8 +50,7 @@ Point `carbonsense.net` DNS to the Vercel project when you are ready to go live 
 | Expert photos | `public/experts/` |
 | Brand / favicons | `public/brand/` |
 | Interactive Spain charts | `public/assets/` |
-
-Remote images still load from `www.carbonsense.net` (see `next.config.ts`).
+| Article hero images | `public/assets/article_imgs/` |
 
 ## Repo handoff
 
